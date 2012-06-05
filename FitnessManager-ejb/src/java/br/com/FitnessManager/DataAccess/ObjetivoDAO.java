@@ -4,14 +4,16 @@
  */
 package br.com.FitnessManager.DataAccess;
 
-import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
+import br.com.FitnessManager.DomainModel.IObjetivoRepositorio;
 import br.com.FitnessManager.DomainModel.Pessoa;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Chrome
  */
-public class ObjetivoDAO extends DAOGenerico<Pessoa> implements IPessoaRepositorio{
+@Stateless
+public class ObjetivoDAO extends DAOGenerico<Pessoa> implements IObjetivoRepositorio{
    
     public ObjetivoDAO(){
         super(Pessoa.class);

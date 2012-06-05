@@ -4,14 +4,16 @@
  */
 package br.com.FitnessManager.DataAccess;
 
-import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
+import br.com.FitnessManager.DomainModel.IMusculoRepositorio;
 import br.com.FitnessManager.DomainModel.Pessoa;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Chrome
  */
-public class MusculoDAO extends DAOGenerico<Pessoa> implements IPessoaRepositorio{
+@Stateless
+public class MusculoDAO extends DAOGenerico<Pessoa> implements IMusculoRepositorio{
    
     public MusculoDAO(){
         super(Pessoa.class);

@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
     @Column(length=50)
     private String login;
     
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne
     private Pessoa pessoa;
 
     public Pessoa getPessoa() {

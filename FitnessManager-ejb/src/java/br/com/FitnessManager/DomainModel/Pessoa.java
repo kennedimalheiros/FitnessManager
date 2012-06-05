@@ -35,8 +35,7 @@ public class Pessoa implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dt_nascimento;
     
-    @OneToMany(cascade= CascadeType.ALL,targetEntity=Medida.class)
-    @JoinColumn(name="Medidas")
+    @ManyToOne(targetEntity=Medida.class)
     Medida medida;
     
     public String getCpf() {

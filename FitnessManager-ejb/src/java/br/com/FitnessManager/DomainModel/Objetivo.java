@@ -6,7 +6,7 @@ package br.com.FitnessManager.DomainModel;
 
 import java.io.Serializable;
 import java.sql.Time;
-import javax.ejb.Timeout;
+import java.util.Date;
 import javax.persistence.*;
 
 /**
@@ -25,20 +25,20 @@ public class Objetivo implements Serializable {
     
     @Column
     @Temporal(TemporalType.TIME)    
-    private Time descanco;
+    private Date descanco;
     
     @Column
     private int treinosSemanais;
     
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name="EsquemaExercicio")
     EsquemaExercicio ee;
 
-    public Time getDescanco() {
+    public Date getDescanco() {
         return descanco;
     }
 
-    public void setDescanco(Time descanco) {
+    public void setDescanco(Date descanco) {
         this.descanco = descanco;
     }
 

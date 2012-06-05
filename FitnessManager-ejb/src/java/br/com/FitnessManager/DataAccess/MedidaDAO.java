@@ -4,14 +4,16 @@
  */
 package br.com.FitnessManager.DataAccess;
 
-import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
+import br.com.FitnessManager.DomainModel.IMedidaRepositorio;
 import br.com.FitnessManager.DomainModel.Pessoa;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Chrome
  */
-public class MedidaDAO extends DAOGenerico<Pessoa> implements IPessoaRepositorio{
+@Stateless
+public class MedidaDAO extends DAOGenerico<Pessoa> implements IMedidaRepositorio{
    
     public MedidaDAO(){
         super(Pessoa.class);

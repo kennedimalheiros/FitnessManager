@@ -6,13 +6,7 @@ package br.com.FitnessManager.DomainModel;
 
 import java.io.Serializable;
 import java.sql.Time;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  *
@@ -27,12 +21,10 @@ public class EsquemaExercicio implements Serializable {
     
     Time tempo;
     
-    @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name="Medida")        
+    @ManyToOne        
     Medida medidaAtual;
     
-    @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name="Medida")        
+    @ManyToOne
     Medida medidaInicial;
     
     

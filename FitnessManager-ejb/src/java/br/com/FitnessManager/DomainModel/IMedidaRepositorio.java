@@ -4,10 +4,13 @@
  */
 package br.com.FitnessManager.DomainModel;
 
+import javax.ejb.Remote;
+
 /**
  *
  * @author Chrome
  */
+@Remote
 public interface IMedidaRepositorio extends IRepositorio<Pessoa>{
     
 }
