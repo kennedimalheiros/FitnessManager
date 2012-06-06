@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Medida implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     public Long getId() {
@@ -45,6 +45,72 @@ public class Medida implements Serializable {
     
     @Column
     private Float Panturrilha;
+
+    public Float getPanturrilha() {
+        return Panturrilha;
+    }
+
+    public void setPanturrilha(Float Panturrilha) {
+        this.Panturrilha = Panturrilha;
+    }
+
+    public Float getAltura() {
+        return altura;
+    }
+
+    public void setAltura(Float altura) {
+        this.altura = altura;
+    }
+
+    public Float getBraco() {
+        return braco;
+    }
+
+    public void setBraco(Float braco) {
+        this.braco = braco;
+    }
+
+    public Float getCintura() {
+        return cintura;
+    }
+
+    public void setCintura(Float cintura) {
+        this.cintura = cintura;
+    }
+
+    public Float getCoxa() {
+        return coxa;
+    }
+
+    public void setCoxa(Float coxa) {
+        this.coxa = coxa;
+    }
+
+    public Float getPeitoral() {
+        return peitoral;
+    }
+
+    public void setPeitoral(Float peitoral) {
+        this.peitoral = peitoral;
+    }
+
+    public Float getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Float peso) {
+        this.peso = peso;
+    }
+
+    public Float getQuadril() {
+        return quadril;
+    }
+
+    public void setQuadril(Float quadril) {
+        this.quadril = quadril;
+    }
+    
+    
     
     public void setId(Long id) {
         this.id = id;
