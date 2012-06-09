@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(length=20)
@@ -23,17 +23,6 @@ public class Usuario implements Serializable {
     
     @Column(length=50)
     private String login;
-    
-    @OneToOne
-    private Pessoa pessoa;
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
 
     public String getLogin() {
         return login;

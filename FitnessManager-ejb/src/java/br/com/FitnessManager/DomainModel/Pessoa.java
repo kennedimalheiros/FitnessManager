@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(length=100)
@@ -35,8 +35,27 @@ public class Pessoa implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dt_nascimento;
     
+    @OneToOne
+    private Usuario usuario;
+    
     @ManyToOne(targetEntity=Medida.class)
     Medida medida;
+
+    public Medida getMedida() {
+        return medida;
+    }
+
+    public void setMedida(Medida medida) {
+        this.medida = medida;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     
     public String getCpf() {
         return cpf;

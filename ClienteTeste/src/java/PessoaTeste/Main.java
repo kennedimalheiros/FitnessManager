@@ -9,6 +9,7 @@ import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
 import br.com.FitnessManager.DomainModel.IUsuarioRepositorio;
 import br.com.FitnessManager.DomainModel.Pessoa;
 import br.com.FitnessManager.DomainModel.Usuario;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -32,13 +33,18 @@ public class Main {
             IUsuarioRepositorio ejbu = (IUsuarioRepositorio)context.lookup("java:global/FitnessManager/FitnessManager-ejb/UsuarioDAO");
             IPessoaRepositorio ejbp = (IPessoaRepositorio)context.lookup("java:global/FitnessManager/FitnessManager-ejb/PessoaDAO");
             
-            Pessoa p;
-            p = ejbp.abrir(1);
+            Pessoa p = new Pessoa();
             Usuario u = new Usuario(); 
-            u.setLogin("Chrome");
-            u.setSenha("123");
-            u.setPessoa(p);            
+            u.setLogin("Gpzim");
+            u.setSenha("1234");            
             ejbu.salvar(u);
+            p.setNome("Gpzim Pacheco");
+            p.setCpf("12345678910");
+            p.setRg("MG15407333");
+            p.setStatus(Boolean.TRUE);
+            p.setUsuario(ejbu.porNome("Gpzim"));
+            ejbp.salvar(p);
+            System.out.println("ID Usuário: "+ejbu.porNome("Gpzim").getId());
             
         } catch (NamingException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

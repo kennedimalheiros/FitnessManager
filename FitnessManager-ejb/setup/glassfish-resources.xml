@@ -12,4 +12,5 @@
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="Fin" object-type="user" pool-name="post-gre-sql_FitnessManager_postgresPool"/>
     <jdbc-resource enabled="true" jndi-name="FitnessManager" object-type="user" pool-name="post-gre-sql_FitnessManager_postgresPool"/>
+    <jdbc-resource enabled="true" jndi-name="FManager" object-type="user" pool-name="post-gre-sql_FitnessManager_postgresPool"/>
 </resources>

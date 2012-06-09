@@ -12,5 +12,5 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface IUsuarioRepositorio extends IRepositorio<Usuario>{
-    
+    Usuario porNome(String nome);
 }
