@@ -2,14 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package PessoaTeste;
+package br.com.FitnessManager.presentation.console;
 
 
 import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
 import br.com.FitnessManager.DomainModel.IUsuarioRepositorio;
 import br.com.FitnessManager.DomainModel.Pessoa;
 import br.com.FitnessManager.DomainModel.Usuario;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;

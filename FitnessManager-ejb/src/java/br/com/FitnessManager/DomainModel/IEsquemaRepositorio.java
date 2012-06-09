@@ -11,6 +11,6 @@ import javax.ejb.Remote;
  * @author Chrome
  */
 @Remote
-public interface IMedidaRepositorio extends IRepositorio<Medida>{
+public interface IEsquemaRepositorio extends IRepositorio<EsquemaExercicio>{
     
 }

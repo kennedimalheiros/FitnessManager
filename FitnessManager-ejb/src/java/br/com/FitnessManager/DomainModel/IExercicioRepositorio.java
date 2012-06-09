@@ -11,6 +11,6 @@ import javax.ejb.Remote;
  * @author Chrome
  */
 @Remote
-public interface IExercicioRepositorio extends IRepositorio<Pessoa>{
+public interface IExercicioRepositorio extends IRepositorio<Exercicio>{
     
 }

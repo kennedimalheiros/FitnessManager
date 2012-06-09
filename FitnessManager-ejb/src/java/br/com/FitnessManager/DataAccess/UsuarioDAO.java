@@ -6,6 +6,7 @@ package br.com.FitnessManager.DataAccess;
 
 import br.com.FitnessManager.DomainModel.IUsuarioRepositorio;
 import br.com.FitnessManager.DomainModel.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 
@@ -25,5 +26,11 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuarioReposito
         Query sql=(Query) manager.createQuery("select u from Usuario u where u.login='"+nome+"'");
         return (Usuario)sql.getSingleResult();
     }
+
+    @Override
+    public List<Usuario> listaTodos() {
+        Query sql=(Query) manager.createQuery("select u from Usuario u");
+        return sql.getResultList();
+   }
 
 }

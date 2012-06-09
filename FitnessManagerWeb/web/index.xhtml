@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Login - Fitness Manager 2012</title>
+    </h:head>
+    <h:body>
+        Bem vindo ao Fitness Manager.
+        
+        Informe seu usário e senha para efetura Login.
+        <br/>
+        (Caso não seja cadastrado, favor informar o usuário e senha desejados para efetuar cadastro)
+        <br/>
+        <h:form>
+            LOGIN:
+            <h:inputText id="loginname" value="#{telalogin.login}"/>
+            <br/>
+            SENHA:
+            <h:inputSecret id="pass" value="#{telalogin.senha}"/>
+            <br/>
+            <h:commandButton id="blogin" value="Login" action="#{telalogin.mostra()}"/>
+            <br/>
+            <h:outputText id="alerta" value="#{telalogin.alerta}"/>
+            </h:form>        
+    </h:body>
+</html>
+
