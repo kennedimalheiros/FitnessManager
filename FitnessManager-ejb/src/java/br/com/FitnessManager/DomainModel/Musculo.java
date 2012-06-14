@@ -27,6 +27,78 @@ public class Musculo implements Serializable {
     
     @Column
     private Float costa;
+
+    public Float getAbdomen() {
+        return abdomen;
+    }
+
+    public void setAbdomen(Float abdomen) {
+        this.abdomen = abdomen;
+    }
+
+    public Float getAntebraco() {
+        return antebraco;
+    }
+
+    public void setAntebraco(Float antebraco) {
+        this.antebraco = antebraco;
+    }
+
+    public Float getAsa() {
+        return asa;
+    }
+
+    public void setAsa(Float asa) {
+        this.asa = asa;
+    }
+
+    public Float getBiceps() {
+        return biceps;
+    }
+
+    public void setBiceps(Float biceps) {
+        this.biceps = biceps;
+    }
+
+    public Float getCosta() {
+        return costa;
+    }
+
+    public void setCosta(Float costa) {
+        this.costa = costa;
+    }
+
+    public Float getOmbro() {
+        return ombro;
+    }
+
+    public void setOmbro(Float ombro) {
+        this.ombro = ombro;
+    }
+
+    public Float getPanturrilha() {
+        return panturrilha;
+    }
+
+    public void setPanturrilha(Float panturrilha) {
+        this.panturrilha = panturrilha;
+    }
+
+    public Float getPeito() {
+        return peito;
+    }
+
+    public void setPeito(Float peito) {
+        this.peito = peito;
+    }
+
+    public Float getTriceps() {
+        return triceps;
+    }
+
+    public void setTriceps(Float triceps) {
+        this.triceps = triceps;
+    }
     
     @Column
     private Float ombro;

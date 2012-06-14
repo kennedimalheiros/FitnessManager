@@ -44,14 +44,14 @@ public class Medida implements Serializable {
     private Float coxa;
     
     @Column
-    private Float Panturrilha;
+    private Float panturrilha;
 
     public Float getPanturrilha() {
-        return Panturrilha;
+        return panturrilha;
     }
 
     public void setPanturrilha(Float Panturrilha) {
-        this.Panturrilha = Panturrilha;
+        this.panturrilha = Panturrilha;
     }
 
     public Float getAltura() {
