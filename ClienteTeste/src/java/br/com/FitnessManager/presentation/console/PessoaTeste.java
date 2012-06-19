@@ -19,7 +19,7 @@ import javax.naming.NamingException;
  *
  * @author Chrome
  */
-public class Main {
+public class PessoaTeste {
 
     /**
      * @param args the command line arguments
@@ -46,7 +46,7 @@ public class Main {
             System.out.println("ID Usuário: "+ejbu.porNome("Gpzim").getId());
             
         } catch (NamingException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PessoaTeste.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
