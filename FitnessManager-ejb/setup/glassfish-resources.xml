@@ -10,7 +10,5 @@
         <property name="URL" value="jdbc:postgresql://localhost:5432/FitnessManager"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="Fin" object-type="user" pool-name="post-gre-sql_FitnessManager_postgresPool"/>
     <jdbc-resource enabled="true" jndi-name="FitnessManager" object-type="user" pool-name="post-gre-sql_FitnessManager_postgresPool"/>
-    <jdbc-resource enabled="true" jndi-name="FManager" object-type="user" pool-name="post-gre-sql_FitnessManager_postgresPool"/>
 </resources>

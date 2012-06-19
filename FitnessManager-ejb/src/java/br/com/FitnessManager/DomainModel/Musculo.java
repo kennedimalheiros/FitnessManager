@@ -27,6 +27,31 @@ public class Musculo implements Serializable {
     
     @Column
     private Float costa;
+   
+    @Column
+    private Float ombro;
+    
+    @Column
+    private Float biceps;
+    
+    @Column
+    private Float triceps;
+    
+    @Column
+    private Float asa;
+    
+    @Column
+    private Float abdomen;
+    
+    @Column
+    private Float antebraco;
+    
+    @Column
+    private Float panturrilha;
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Float getAbdomen() {
         return abdomen;
@@ -100,31 +125,6 @@ public class Musculo implements Serializable {
         this.triceps = triceps;
     }
     
-    @Column
-    private Float ombro;
-    
-    @Column
-    private Float biceps;
-    
-    @Column
-    private Float triceps;
-    
-    @Column
-    private Float asa;
-    
-    @Column
-    private Float abdomen;
-    
-    @Column
-    private Float antebraco;
-    
-    @Column
-    private Float panturrilha;
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
