@@ -5,26 +5,17 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Login - Fitness Manager 2012</title>
+
     </h:head>
+    
     <h:body>
-        <ui:include src="cabecalho.xhtml" />
+        <ui:include src="cabecalho.xhtml" /> 
         Bem vindo ao Fitness Manager.
         
         Informe seu usário e senha para efetura Login.
         <br/>
         (Caso não seja cadastrado, favor informar o usuário e senha desejados para efetuar cadastro)
-        <br/>
-        <h:form>
-            LOGIN:
-            <h:inputText id="loginname" value="#{telalogin.login}"/>
-            <br/>
-            SENHA:
-            <h:inputSecret id="pass" value="#{telalogin.senha}"/>
-            <br/>
-            <h:commandButton id="blogin" value="Login" action="#{telalogin.mostra()}"/>
-            <br/>
-            <h:outputText id="alerta" value="#{telalogin.alerta}"/>
-            </h:form>        
+        <br/>        
     </h:body>
 </html>
 
