@@ -11,6 +11,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
+import javax.ejb.EJB;
 
 /**
  *
@@ -20,13 +21,9 @@ import java.util.List;
 @SessionScoped
 public class TelaLogin implements Serializable {
     
-    //@EJB
+    @EJB
     IUsuarioRepositorio repUser;
-    private String login,senha,alerta;
-    
-    public TelaLogin() {
-    
-    }
+    String login,senha,alerta;
 
     public String getAlerta() {
         return alerta;
@@ -52,6 +49,10 @@ public class TelaLogin implements Serializable {
         this.senha = senha;
     }
     
+    public TelaLogin() {
+    
+    }
+   
     public void verificaUsuario(){
         List<Usuario> usuarios = repUser.listaTodos();
         Iterator<Usuario> i = usuarios.iterator();

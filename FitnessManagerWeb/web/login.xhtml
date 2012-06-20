@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+ <title>Fitness Manager</title>
+ <meta http-equiv="content-type" content="application/xhtml; charset=UTF-8" />
+ <link href="css/login/style.css" rel="stylesheet" type="text/css"/>
+
+  <!--[if lt IE 8.]>
+<link rel="stylesheet" type="text/css" href="css/style-ie.css" />
+<![endif]-->
+ <!--[if lt IE 7.]>
+<link rel="stylesheet" type="text/css" href="css/style-ie6.css" />
+<![endif]-->
+</h:head>
+
+<h:body>
+
+<!-- Main Body Starts Here -->
+<div id="main_body">
+<!-- Form Title Starts Here -->
+<div class="form_title">
+<img src="images/form_title.gif" alt="Sleek &amp; Modern Login Form - Design3Edge" />
+</div>
+<!-- Form Title Ends Here -->
+
+<!-- Form Starts Here -->
+<div class="form_box">
+
+<h:form id="loginform">
+
+<!-- User Name -->
+<p class="form_text">
+*User Name
+</p>
+
+<p class="form_input_BG"><h:inputText type="text" name="name" id="name" value="#{telalogin.login}"/></p>
+<!-- User Name -->
+
+<!-- Clear -->
+<p class="clear">&nbsp;
+</p>
+<!-- Clear -->
+
+<!-- Password -->
+<p class="form_text" style="margin-left:8px;">
+*Password
+</p>
+
+<p class="form_input_BG"><h:inputSecret type="password" name="pwd" id="pwd" value="#{telalogin.senha}"/></p>
+<!-- Password -->
+
+<!-- Clear -->
+<p class="clear">&nbsp;
+</p>
+<!-- Clear -->
+
+<p class="form_check_box">
+Remember me <input type="checkbox" name="chk" id="chk" checked="checked"/>
+</p>
+
+<p class="buttom_login">
+	<h:commandLink action="index.xhtml"><input title="login Now5" style="margin-left:96px;" type="image" src="images/login_btn.png" name="login" id="login"/></h:commandLink> <input type="image" src="images/signup_btn.png" title="Signup Now" name="signup" id="signup" />
+</p>
+
+</h:form>
+
+</div>
+<!-- Form Ends Here -->
+
+</div>
+<!-- Main Body Ends Here -->
+</h:body>
+</html>

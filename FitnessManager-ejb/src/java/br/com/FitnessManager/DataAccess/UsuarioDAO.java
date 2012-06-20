@@ -29,7 +29,7 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuarioReposito
 
     @Override
     public List<Usuario> listaTodos() {
-        Query sql=(Query) manager.createQuery("select u from Usuario u");
+        Query sql=(Query) manager.createQuery("select * from Usuario u");
         return sql.getResultList();
    }
 
