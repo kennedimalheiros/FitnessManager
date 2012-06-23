@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
 <h:head>
  <title>Fitness Manager</title>
  <meta http-equiv="content-type" content="application/xhtml; charset=UTF-8" />
@@ -63,14 +64,14 @@ Remember me <input type="checkbox" name="chk" id="chk" checked="checked"/>
 </p>
 
 <p class="buttom_login">
-	<h:commandLink action="index.xhtml"><input title="login Now5" style="margin-left:96px;" type="image" src="images/login_btn.png" name="login" id="login"/></h:commandLink> <input type="image" src="images/signup_btn.png" title="Signup Now" name="signup" id="signup" />
+    <h:commandLink action="index.xhtml"><input title="login Now5" style="margin-left:96px;" type="image" src="images/login_btn.png" name="login" id="login"/></h:commandLink> <h:commandLink action="registrar.xhtml"><input type="image" src="images/signup_btn.png" title="Signup Now" name="signup" id="signup" /></h:commandLink>
+    
 </p>
 
 </h:form>
 
 </div>
 <!-- Form Ends Here -->
-
 </div>
 <!-- Main Body Ends Here -->
 </h:body>

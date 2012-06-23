@@ -13,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 public class Usuario implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,9 +46,6 @@ public class Usuario implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Override
     public int hashCode() {

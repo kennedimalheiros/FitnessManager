@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <title>Fitness Manager 2012</title>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body class="body">
+        <div style="width: 900px; margin-left: 200px; margin-right: 200px;">
+            <p:panel header="Registrar" footer="Desenvolvido por Gpzim, Chrome e Lilo" >
+                <ui:include src="cabecalho.xhtml" /> 
+                <h2>Favor informar os dados abaixo:</h2>
+                <h:form>
+                    <h:inputText id="entrada" value="#{registroUsuario.testeu}" />
+                    <h:outputText id="saida" value="#{registroUsuario.testeu}" />
+                    <p:commandButton id="botao" value="OK" onclick="dlg1.show()" action="#{registroUsuario.teste()}" update="dlg1" />
+                </h:form>
+                <p:dialog id="basicDialog" header="Basic Dialog" widgetVar="dlg1">  
+                    <h:outputText value="#{registroUsuario.testeu}" />  
+                </p:dialog>
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <br/>
+                    Usuário*:
+                    <br/>
+                    <h:inputText id="username" value="#{registroUsuario.usuario}" required="true"/>
+                    <br/>
+                    Nome*:
+                    <br/>
+                    <h:inputText id="name" value="#{registroUsuario.nome}" required="true"/>
+                    <br/>
+                    Senha*:
+                    <br/>
+                    <p:password id="pass1" match="pass2" minLength="8" value="#{registroUsuario.senha}" feedback="true"   
+                                promptLabel="Força da Senha" weakLabel="Fraca"  
+                                goodLabel="Boa" strongLabel="Excelente" required="true"/>
+                    <br/>
+                    Confirmar Senha*:
+                    <br/>
+                    <p:password id="pass2" minLength="8" value="#{registroUsuario.senha}" feedback="false" label="Confirma senha" required="true"/>
+                    <br/>
+                    <p:commandButton id="saveButton" update="matchGrid" value="Registrar" onclick="confirmation.show()"/>
+                    <h:outputLabel id="msg" value="#{registroUsuario.nome}"/>
+                    <p:confirmDialog id="confirmDialog"  message="Confirmar Registro?"  
+                        header="Registro de novo Usuário" severity="alert" widgetVar="confirmation">  
+                        <br/>
+                        <p:commandButton id="confirm" value="Confirmar" update="growl" oncomplete="confirmation.hide()"  
+                                         actionListener="#{registroUsuario.msgConfirma}"/>  
+                        <p:commandButton id="decline" value="Cancelar" onclick="confirmation.hide()" type="button" />   
+                        
+                    </p:confirmDialog>
+                </h:form>
+                Usuario<br/>
+                <h:outputText value="#{registroUsuario.testeu}"/><br/>
+                senha:<br/>
+                <h:outputText value="#{registroUsuario.testes}"/>
+            </p:panel>
+        </div>
+    </h:body>  
+</html>
+

@@ -35,26 +35,18 @@ public class Pessoa implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dt_nascimento;
     
-    @OneToOne
-    private Usuario usuario;
-    
     @ManyToOne(targetEntity=Medida.class)
     Medida medida;
-
+    
+    @OneToOne()
+    Usuario usuario;
+    
     public Medida getMedida() {
         return medida;
     }
 
     public void setMedida(Medida medida) {
         this.medida = medida;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
     
     public String getCpf() {
@@ -73,6 +65,14 @@ public class Pessoa implements Serializable {
         this.dt_nascimento = dt_nascimento;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
     public Long getId() {
         return id;
     }
