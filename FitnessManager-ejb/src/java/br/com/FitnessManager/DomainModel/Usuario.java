@@ -19,7 +19,7 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(length=20)
+    @Column(length=255)
     private String senha;
     
     @Column(length=50)
