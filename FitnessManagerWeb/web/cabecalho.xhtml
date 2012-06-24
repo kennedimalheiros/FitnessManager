@@ -1,14 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.prime.com.tr/ui">
+      xmlns:p="http://primefaces.org/ui">
     <div>   
             <h:form>
+                
                 <p:growl id="messages"/>
                 <p:menubar>
-                    <p:menuitem value="Home" url="#" />
+                    <p:menuitem value="Home" url="index.xhtml"/>
                     <p:submenu label="Esquemas" url="#">
-                        <p:menuitem value="Abrir" url="#" />
+                        <p:menuitem value="Exercicios" url="exercicios.xhtml" />
                         <p:separator />
                         <p:menuitem value="Iniciar novo" url="#" />
                     </p:submenu>
@@ -17,17 +18,8 @@
                         <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
                         <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
                     </p:submenu>
-
-                    <p:submenu label="Help" icon="ui-icon-help">
-                        <p:menuitem value="Contents" url="#" />
-                        <p:submenu label="Search" icon="ui-icon-search">
-                            <p:submenu label="Text">
-                                <p:menuitem value="Workspace" url="#" />
-                            </p:submenu>
-                            <p:menuitem value="File" url="#" />
-                        </p:submenu>
-                    </p:submenu>
-
+                    <p:menuitem value="Login" url="login.xhtml" />
+                    <p:menuitem value="Registrar" url="registrar.xhtml" />
                 </p:menubar>
             </h:form>
     </div>

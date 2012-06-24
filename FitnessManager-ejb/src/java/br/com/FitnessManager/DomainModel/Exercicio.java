@@ -21,7 +21,7 @@ public class Exercicio implements Serializable {
     @Column(length=30)
     private String nome;
     
-    @Column
+    @Column(length=2048)
     private String descricao;
     
     @Column
@@ -83,7 +83,7 @@ public class Exercicio implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.FitnessManager.DomainModel.Usuario[ id=" + id + " ]";
+        return "\nid=" + id + "\nNome= "+nome+"\nDescricao="+descricao;
     }
     
 }

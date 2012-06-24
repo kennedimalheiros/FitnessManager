@@ -88,7 +88,7 @@ public class RegistroUsuario {
     
     public void msgConfirma(ActionEvent actionEvent){  
         salvar();
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns "+getUsuario(),  "Registro realizado com sucesso!");  
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns",  "Registro realizado com sucesso!");  
           
         FacesContext.getCurrentInstance().addMessage(null, message);  
     }

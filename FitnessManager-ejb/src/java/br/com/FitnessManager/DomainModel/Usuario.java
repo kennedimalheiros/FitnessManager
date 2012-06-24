@@ -13,6 +13,12 @@ import javax.persistence.*;
  */
 @Entity
 public class Usuario implements Serializable {
+     
+    public Usuario(){
+        this.id = 0L;
+        this.login = "";
+        this.senha = ""; 
+    }
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -22,7 +28,7 @@ public class Usuario implements Serializable {
     @Column(length=255)
     private String senha;
     
-    @Column(length=50)
+    @Column(unique=true, length=50)
     private String login;
 
     public String getLogin() {
@@ -69,7 +75,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.FitnessManager.DomainModel.Usuario[ id=" + id + " ]";
+        return "\nid=" + id + "\nLogin: "+login+"\nSenha:"+senha;
     }
     
 }
