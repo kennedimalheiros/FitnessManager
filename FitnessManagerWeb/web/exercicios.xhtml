@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Fitness Manager 2012</title>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body class="body">
+        <div style="width: 900px; margin-left: 200px; margin-right: 200px;">
+            <p:panel header="Registrar" footer="Desenvolvido por Gpzim, Chrome e Lilo" >
+                <ui:include src="cabecalho.xhtml" /> 
+                <h:form id="form" prependId="false">  
+                    <p:dataTable id="basic" var="item" value="#{exercicios.preencheLista()}"
+                                paginator="true" rows="10"  
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                rowsPerPageTemplate="5,10,15">  
+                        <p:column style="width:100px">  
+                            <f:facet name="header">  
+                                    Imagem  
+                            </f:facet>
+                            <p:graphicImage value="images/exercicios/miniatura/#{item.endfoto}.jpg"/>
+                        </p:column>                       
+                        <p:column id="modelHeader" style="width:100px">  
+                            <f:facet name="header">  
+                                    Nome  
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </p:column>  
+                        <p:column>  
+                            <f:facet name="header">  
+                                    Descricão  
+                            </f:facet>
+                            <h:outputText value="#{item.descricao}"/>
+                        </p:column>
+                        <p:column style="width:40px">  
+                            <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
+                                <p:commandButton id="selectButton" update=":form:display" onclick="exDialog.show()" icon="ui-icon-search" title="Vizualizar">  
+                                    <f:setPropertyActionListener value="#{item}" target="#{exercicios.exercicioSelecionado}" />  
+                                </p:commandButton>  
+                            </h:panelGrid>  
+                        </p:column>
+                    </p:dataTable>
+                    <p:dialog header="Detalhes do Exercício" widgetVar="exDialog" resizable="false" id="exDlg"  
+                              showEffect="fade" hideEffect="explode" modal="true">  
+                        <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto; width: 300px">  
+                            <f:facet name="header">  
+                                <p:graphicImage value="images/exercicios/miniatura/#{exercicios.exercicioSelecionado.endfoto}.jpg"/>  
+                            </f:facet>  
+                            <h:outputText value="Nome" />  
+                            <h:outputText value="#{exercicios.exercicioSelecionado.nome}" style="font-weight:bold"/>  
+                            <h:outputText value="Descrição:" />
+                            <h:outputText value="#{exercicios.exercicioSelecionado.descricao}" style="font-weight:bold"/>
+                        </h:panelGrid>  
+                    </p:dialog>
+                </h:form>
+            </p:panel>
+        </div>
+    </h:body>  
+</html>
+

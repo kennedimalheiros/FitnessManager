@@ -9,9 +9,15 @@ import br.com.FitnessManager.DomainModel.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import sun.misc.BASE64Encoder;
 
 /**
  *
@@ -34,7 +40,7 @@ public class TelaLogin implements Serializable {
     }
 
     public String getLogin() {
-        return login;
+        return "Teste";
     }
 
     public void setLogin(String login) {
@@ -52,22 +58,80 @@ public class TelaLogin implements Serializable {
     public TelaLogin() {
     
     }
-   
-    public void verificaUsuario(){
+    
+    public void abrir(){
+        Usuario u = repUser.abrir(1L);
+        login="Teste";
+        senha="Teste";
+    }
+    
+    /**
+     * Verifica se existe usuário cadastrado no banco com o valor informado.
+     * @return true se exite usuario, false caso contrario 
+     */
+    public boolean verificaUsuario(){
         List<Usuario> usuarios = repUser.listaTodos();
         Iterator<Usuario> i = usuarios.iterator();
         while(i.hasNext()){
-            if(login.equals(i.next().getLogin())){
-                alerta = "Usuario ja cadastrado, informe senha para login ou novo usuario para cadastro";
-                break;
+            if(login.equalsIgnoreCase(i.next().getLogin())){
+                //Se exite usuário com mesmo nome, retora verdadeiro, se não.
+                return true;
             }
         }
+        return false;
+    }
+    public boolean verificaSenha(){
+        Usuario u = repUser.porNome(login);
+        String senha = encripta(this.senha);
+        if(senha.equals(u.getSenha())){
+                //Se exite usuário com mesmo nome, retora verdadeiro, se não.
+            return true;
+        }
+        return false;
     }
     
-    public void mostra(){
-        alerta=login;
+    
+    public int validaLogin(){
+        if(verificaUsuario()){
+            if(verificaSenha()){
+                return 2;
+            }
+            return 1;
+        }
+        return 0;
     }
     
+    public void msgInformativo(ActionEvent actionEvent){  
+        abrir();
+        int log = 1;
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao Logar", "Dados incorretos");
+        if(log==2){
+             message.setSeverity(FacesMessage.SEVERITY_INFO);
+             message.setSummary("Login");
+             message.setDetail("Login realizado com sucesso!");
+        }
+        if(log==1){
+             message.setSeverity(FacesMessage.SEVERITY_ERROR);
+             message.setSummary("Login");
+             message.setDetail("Senha incorreta, tente novamente!");
+        }
+        if(log==0){
+             message.setSeverity(FacesMessage.SEVERITY_ERROR);
+             message.setSummary("Login");
+             message.setDetail("Usuario nao existe, verifique\no nome digitado e tente novamente!");
+        }
+        FacesContext.getCurrentInstance().addMessage(null, message);  
+    }
     
-    
+    public static String encripta (String senha) {     
+           try {     
+                MessageDigest digest = MessageDigest.getInstance("MD5");      
+                digest.update(senha.getBytes());      
+                BASE64Encoder encoder = new BASE64Encoder ();      
+                return encoder.encode (digest.digest ());      
+           } catch (NoSuchAlgorithmException ns) {     
+                ns.printStackTrace ();      
+                return senha;      
+           }      
+     }
 }

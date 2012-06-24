@@ -4,6 +4,7 @@
  */
 package br.com.FitnessManager.DomainModel;
 
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -12,5 +13,5 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface IExercicioRepositorio extends IRepositorio<Exercicio>{
-    
+    List<Exercicio> listaTodos();
 }

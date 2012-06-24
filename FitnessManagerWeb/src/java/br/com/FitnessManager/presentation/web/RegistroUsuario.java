@@ -5,23 +5,27 @@
 package br.com.FitnessManager.presentation.web;
 
 import br.com.FitnessManager.DomainModel.IUsuarioRepositorio;
-import br.com.FitnessManager.DomainModel.Pessoa;
 import br.com.FitnessManager.DomainModel.Usuario;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;  
 import javax.faces.context.FacesContext;  
 import javax.faces.event.ActionEvent;
+import sun.misc.BASE64Encoder;
 
 /**
  *
  * @author Chrome
  */
 @Named(value = "registroUsuario")
-@Dependent
+@RequestScoped
 public class RegistroUsuario {
     
+    @EJB
+    IUsuarioRepositorio r;    
     String usuario;  
     String nome;  
     String senha;
@@ -51,10 +55,7 @@ public class RegistroUsuario {
     public void setTesteu(String testeu) {
         this.testeu = testeu;
     }
-    
-    @EJB
-    IUsuarioRepositorio r;
-    
+     
     public RegistroUsuario() {
     }
 
@@ -77,8 +78,8 @@ public class RegistroUsuario {
     public void salvar(){
         Usuario u = new Usuario(); 
         u.setLogin(getUsuario());
-        u.setSenha(getSenha());
-        //r.salvar(u);
+        u.setSenha(encripta(getSenha()));
+        r.salvar(u);
     }
     
     public void teste(){
@@ -86,10 +87,21 @@ public class RegistroUsuario {
     }
     
     public void msgConfirma(ActionEvent actionEvent){  
-        teste();
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns "+getTesteu(),  "Registro realizado com sucesso!");  
+        salvar();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns",  "Registro realizado com sucesso!");  
           
         FacesContext.getCurrentInstance().addMessage(null, message);  
     }
-    
+
+    public static String encripta (String senha) {     
+           try {     
+                MessageDigest digest = MessageDigest.getInstance("MD5");      
+                digest.update(senha.getBytes());      
+                BASE64Encoder encoder = new BASE64Encoder ();      
+                return encoder.encode (digest.digest ());      
+           } catch (NoSuchAlgorithmException ns) {     
+                ns.printStackTrace ();      
+                return senha;      
+           }      
+     }      
 }
