@@ -13,7 +13,7 @@
             <p:panel header="Registrar" footer="Desenvolvido por Gpzim, Chrome e Lilo" >
                 <ui:include src="cabecalho.xhtml" /> 
                 <h:form id="form" prependId="false">  
-                    <p:dataTable id="basic" var="item" value="#{exercicios.preencheLista()}"
+                    <p:dataTable id="basic" var="item" value="#{exercicios.exercicios}"
                                 paginator="true" rows="10"  
                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
                                 rowsPerPageTemplate="5,10,15">  

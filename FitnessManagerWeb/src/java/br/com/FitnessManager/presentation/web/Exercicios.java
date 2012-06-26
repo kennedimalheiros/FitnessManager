@@ -21,6 +21,7 @@ public class Exercicios implements Serializable{
 
     private List<Exercicio> exercicios;
     private Exercicio exselecionado;
+    
     @EJB
     IExercicioRepositorio rep;
     
@@ -36,11 +37,12 @@ public class Exercicios implements Serializable{
     }  
   
     public List<Exercicio> preencheLista() {  
-        if(exercicios == null)
-            exercicios = rep.listaTodos();
+        
         return exercicios;
     }
     public List<Exercicio> getExercicios() {  
+        if(exercicios == null)
+            exercicios = rep.listaTodos();
         return exercicios;  
     } 
 }
