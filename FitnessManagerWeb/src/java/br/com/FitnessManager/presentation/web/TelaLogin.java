@@ -40,7 +40,7 @@ public class TelaLogin implements Serializable {
     }
 
     public String getLogin() {
-        return "Teste";
+        return login;
     }
 
     public void setLogin(String login) {
@@ -82,7 +82,7 @@ public class TelaLogin implements Serializable {
     }
     public boolean verificaSenha(){
         Usuario u = repUser.porNome(login);
-        String senha = encripta(this.senha);
+        String pass = encripta(this.senha);
         if(senha.equals(u.getSenha())){
                 //Se exite usuário com mesmo nome, retora verdadeiro, se não.
             return true;
