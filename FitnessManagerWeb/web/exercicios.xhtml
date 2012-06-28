@@ -12,73 +12,59 @@
         <div style="width: 900px; margin-left: 200px; margin-right: 200px;">
             <p:panel header="Registrar" footer="Desenvolvido por Gpzim, Chrome e Lilo" >
                 <ui:include src="cabecalho.xhtml" /> 
+                
                 <h2>Listagem dos esquemas de exercícios</h2>
                 <h:form id="formreg">
-                    <p:growl id="growl" showDetail="true" sticky="true" />
-                    <br/>
-                    Descriçõess:
-                    <br/>
-                    <table border="1"> 
-                       <tr> 
-                               <td>Nome do exercicio</td>
-                               <td>Duração</td>       
-                               <td>Descricao</td>
-                       </tr>
-                        <tr> 
-                               <td>Supino reto</td>
-                               <td>04:00</td>       
-                               <td>
-                                   <p> O supino é uma forma de levantamento de peso que é 
+<p:tabView orientation="top|bottom|left|right">  
+    <p:tab title="Supino">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/exercicios/supino.jpg" />  
+            <h:outputText  
+                value=" O supino é uma forma de levantamento de peso que é 
                                    voltado principalmente para o desenvolvimento dos 
                                    músculos peitorais maiores, mas que também envolve, 
                                    como agonistas, os músculos deltóide, serrátil anterior, 
                                    coracobraquial e tríceps braquial. Enquanto está deitada 
                                    para cima, a pessoa abaixa uma barra com pesos até perto 
                                    do peito [90º graus], e então a empurra para cima até que 
-                                   seus braços estejam esticados (ou próximos a isso).
-                                   </p>
-                               </td>
-                               <td> 
-                                    <h:panelGrid>  
-                                    <p:selectOneRadio id="options">  
-                                        <f:selectItem itemLabel="Selecionar" itemValue="1" />  
-                                    </p:selectOneRadio>  
-                                </h:panelGrid> 
-                               </td>                               
-                       </tr>
-                        <tr> 
-                               <td>LegPress</td>
-                               <td>05:00</td>       
-                               <td>
-                                   <p> Leg press é um equipamento para a 
+                                   seus braços estejam esticados (ou próximos a isso)." />  
+        </h:panelGrid>  
+    </p:tab>  
+    <p:tab title="LegPress">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/exercicios/legpress.jpg" />  
+            <h:outputText value="Leg press é um equipamento para a 
                                        prática de exercícios de treinamento 
                                        de peso individuais, na qual a pessoa 
                                        empurra um peso para longe dela, 
                                        usando as suas pernas. Posicionando os 
                                        pés no meio da máquina,se trabalha o quadriceps.
                                        Posicionando apenas a ponta dos pés,se trabalha 
-                                       a panturrilha/batata da perna.
-                                   </p>
-                               </td>
-                               <td> 
-                                    <h:panelGrid>  
-                                    <p:selectOneRadio id="options1">  
-                                        <f:selectItem itemLabel="Selecionar" itemValue="1" />  
-                                    </p:selectOneRadio>  
-                                </h:panelGrid> 
-                               </td>                               
-                       </tr>
-                        
-                    </table>
-                    <p:commandButton id="saveButton" update="formreg" value="Escolher Esquema" onclick="confirmation.show()"/>
-                    <h:outputLabel id="msg" value="#{registroUsuario.nome}"/>
-                    <p:confirmDialog id="confirmDialog"  message="Confirmar Registro?"  
-                        header="Registro de novo Usuário" severity="alert" widgetVar="confirmation">  
-                        <br/>
-                        <p:commandButton id="confirm" value="Confirmar" update="growl" oncomplete="confirmation.hide()"  
-                                         actionListener="#{registroUsuario.msgConfirma}"/>  
-                        <p:commandButton id="decline" value="Cancelar" onclick="confirmation.hide()" type="button" />           
-                    </p:confirmDialog>
+                                         a panturrilha/batata da perna."></h:outputText>  
+        </h:panelGrid>  
+    </p:tab>  
+    <p:tab title="Pulley">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/exercicios/puley.jpg" />  
+            <h:outputText value="Se você deseja chapar a barriga, o abdominal 
+                          feito no pulley é mais uma opção para deixar essa
+                          parte do corpo retinha, retinha – bem do jeito que 
+                          todo mundo gosta. O exercício dá ênfase ao retoabdominal, 
+                          que é o músculo frontal dessa região e responsável por 
+                          criar aqueles famosos gominhos. Como o trabalho no 
+                          aparelho é feito com carga, você precisa contrair 
+                          bem o abdômen durante a execução e se concentrar 
+                          no movimento. Caso contrário, a malhação não vai 
+                          surtir efeito. “Tem gente que faz de qualquer jeito
+                          e acaba transferindo o esforço da barriga para os
+                          membros superiores, utilizando a musculatura dos braços 
+                          para puxar o cabo. Daí não adianta nada”, diz Guilherme Assad, professor de
+                          musculação da Reebok Sports Club"/> 
+            
+        </h:panelGrid>  
+    </p:tab>  
+</p:tabView>                   
+                    
                 </h:form>
             </p:panel>
         </div>  
