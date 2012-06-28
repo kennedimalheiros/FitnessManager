@@ -70,13 +70,11 @@
                        </tr>
                         
                     </table>
-                    <p:commandButton id="saveButton" update="formreg" value="Escolher Esquema" onclick="confirmation.show()"/>
-                    <h:outputLabel id="msg" value="#{registroUsuario.nome}"/>
+                    <p:commandButton id="saveButton" value="Escolher Esquema" onclick="confirmation.show()"/>
                     <p:confirmDialog id="confirmDialog"  message="Confirmar Registro?"  
                         header="Registro de novo Usuário" severity="alert" widgetVar="confirmation">  
                         <br/>
-                        <p:commandButton id="confirm" value="Confirmar" update="growl" oncomplete="confirmation.hide()"  
-                                         actionListener="#{registroUsuario.msgConfirma}"/>  
+                        <p:commandButton id="confirm" value="Confirmar" update="growl" oncomplete="confirmation.hide()"/>  
                         <p:commandButton id="decline" value="Cancelar" onclick="confirmation.hide()" type="button" />           
                     </p:confirmDialog>
                 </h:form>
