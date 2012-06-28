@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Fitness Manager 2012</title>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body class="body">
+        <div style="width: 900px; margin-left: 200px; margin-right: 200px;">
+            <p:panel header="Registrar" footer="Desenvolvido por Gpzim, Chrome e Lilo" >
+                <ui:include src="cabecalho.xhtml" /> 
+                <h2>Perfil do Usuario</h2>
+                <h:form id="formreg">
+                    <p:tabView id="tabView">  
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        <p:tab id="pessoal" title="Dados Pessoais">  
+                                <h:outputText value="Nome: "/>  
+                                <h:outputText  id="Nome" /> 
+                                <h:outputText value="Rua: " /> 
+                                <h:outputText  id="Rua" /><br/>  
+                                <h:outputText value="Bairro: " />  
+                                <h:outputText  id="Bairro" />  
+                                <h:outputText value="Cidade: " />  
+                                <h:outputText  id="Cidade" /><br/>  
+                                <h:outputText value="CEP: " />  
+                                <h:outputText id="CEP" />  
+                                <h:outputText value="Telefone: " />  
+                                <h:inputText id="Telefone" /><br/>  
+                                <h:outputText value="Celular: " />  
+                                <h:outputText id="Celular" />
+                                <h:outputText value="Email: " />  
+                                <h:outputText  id="Email" /><br/>       
+                                <p:commandButton id="Editar" update="tabView" value="Editar"/>
+                                <h:outputLabel id="msg" /> 
+                        </p:tab>
+                        <p:tab id="conta" title="Dados da Conta">  
+                                <h:outputText value="Nome: " />                               
+                        </p:tab>
+                    </p:tabView> 
+                </h:form>
+            </p:panel>
+        </div>
+    </h:body>  
+</html>
+

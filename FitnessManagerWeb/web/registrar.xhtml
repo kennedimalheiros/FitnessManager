@@ -33,8 +33,7 @@
                     <br/>
                     <p:password id="confirmasenha" minLength="8" value="#{registroUsuario.senha}" feedback="false" label="Confirma senha" required="true"/>
                     <br/>
-                    <p:commandButton id="saveButton" update="formreg" value="Registrar" onclick="confirmation.show()"/>
-                    <h:outputLabel id="msg" value="#{registroUsuario.nome}"/>
+                    <p:commandButton id="saveButton" value="Registrar" onclick="confirmation.show()"/>
                     <p:confirmDialog id="confirmDialog"  message="Confirmar Registro?"  
                         header="Registro de novo Usuário" severity="alert" widgetVar="confirmation">  
                         <br/>
