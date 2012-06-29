@@ -11,6 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;  
 import java.util.List;  
 import javax.ejb.EJB;
+
 /**
  *
  * @author Chrome
@@ -26,8 +27,9 @@ public class Exercicios implements Serializable{
     IExercicioRepositorio rep;
     
     public Exercicios() {
-    }  
-      
+    }
+
+          
     public Exercicio getExercicioSelecionado() {  
         return exselecionado;  
     }  

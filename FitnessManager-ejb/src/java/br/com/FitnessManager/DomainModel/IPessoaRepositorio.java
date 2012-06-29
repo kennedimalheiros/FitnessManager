@@ -4,6 +4,7 @@
  */
 package br.com.FitnessManager.DomainModel;
 
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -12,5 +13,7 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface IPessoaRepositorio extends IRepositorio<Pessoa>{
-    
+    Pessoa porNome(String nome);
+    Pessoa porLogin(String login);
+    List<Pessoa> listaTodos();
 }

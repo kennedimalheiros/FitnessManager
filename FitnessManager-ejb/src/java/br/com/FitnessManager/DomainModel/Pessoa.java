@@ -22,11 +22,26 @@ public class Pessoa implements Serializable {
     @Column(length=100)
     private String nome;
     
-    @Column(length=11)
-    private String cpf;
+    @Column
+    private String end_rua;
     
-    @Column(length=11)
-    private String rg;
+    @Column
+    private String end_bairro;
+    
+    @Column
+    private String end_cidade;
+    
+    @Column
+    private String end_cep;
+    
+    @Column
+    private String telefone;
+    
+    @Column
+    private String celular;
+    
+    @Column
+    private String email;
     
     @Column
     private Boolean status;
@@ -38,7 +53,7 @@ public class Pessoa implements Serializable {
     @ManyToOne(targetEntity=Medida.class)
     Medida medida;
     
-    @OneToOne()
+    @OneToOne(cascade= CascadeType.PERSIST)
     Usuario usuario;
     
     public Medida getMedida() {
@@ -49,14 +64,6 @@ public class Pessoa implements Serializable {
         this.medida = medida;
     }
     
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public Date getDt_nascimento() {
         return dt_nascimento;
     }
@@ -89,13 +96,6 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
 
     public Boolean getStatus() {
         return status;
