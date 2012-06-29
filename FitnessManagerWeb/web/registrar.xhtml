@@ -17,28 +17,29 @@
                     <br/>
                     Usuário*:
                     <br/>
-                    <p:inputText id="usuario" value="#{registroUsuario.usuario}" required="true"/>
+                    <p:inputText id="usuario" value="#{registro.usuario}" required="true"/>
                     <br/>
                     Nome*:
                     <br/>
-                    <p:inputText id="nome" value="#{registroUsuario.nome}" required="true"/>
+                    <p:inputText id="nome" value="#{registro.nome}" required="true"/>
                     <br/>
                     Senha*:
                     <br/>
-                    <p:password id="senha" match="confirmasenha" minLength="8" value="#{registroUsuario.senha}" feedback="true"   
+                    <p:password id="senha" match="confirmasenha" minLength="8" value="#{registro.senha}" feedback="true"   
                                 promptLabel="Força da Senha" weakLabel="Fraca"  
                                 goodLabel="Boa" strongLabel="Excelente" required="true"/>
                     <br/>
                     Confirmar Senha*:
                     <br/>
-                    <p:password id="confirmasenha" minLength="8" value="#{registroUsuario.senha}" feedback="false" label="Confirma senha" required="true"/>
+                    <p:password id="confirmasenha" minLength="8" value="#{registro.senha}" feedback="false" label="Confirma senha" required="true"/>
                     <br/>
                     <p:commandButton id="saveButton" value="Registrar" onclick="confirmation.show()"/>
+
                     <p:confirmDialog id="confirmDialog"  message="Confirmar Registro?"  
                         header="Registro de novo Usuário" severity="alert" widgetVar="confirmation">  
                         <br/>
                         <p:commandButton id="confirm" value="Confirmar" update="growl" oncomplete="confirmation.hide()"  
-                                         actionListener="#{registroUsuario.msgConfirma}"/>  
+                                         actionListener="#{registro.confirma(actionEvent)}"/>  
                         <p:commandButton id="decline" value="Cancelar" onclick="confirmation.hide()" type="button" />           
                     </p:confirmDialog>
                 </h:form>

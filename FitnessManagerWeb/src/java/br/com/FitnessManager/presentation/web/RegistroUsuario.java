@@ -8,6 +8,7 @@ import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
 import br.com.FitnessManager.DomainModel.IUsuarioRepositorio;
 import br.com.FitnessManager.DomainModel.Pessoa;
 import br.com.FitnessManager.DomainModel.Usuario;
+import java.awt.event.ActionEvent;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.ejb.EJB;
@@ -15,14 +16,13 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;  
 import javax.faces.context.FacesContext;  
-import javax.faces.event.ActionEvent;
 import sun.misc.BASE64Encoder;
 
 /**
  *
  * @author Chrome
  */
-@Named(value = "registroUsuario")
+@Named(value = "registro")
 @RequestScoped
 public class RegistroUsuario {
     
@@ -107,7 +107,7 @@ public class RegistroUsuario {
         setTesteu(getUsuario());
     }
     
-    public void msgConfirma(ActionEvent actionEvent){  
+    public void Confirma(ActionEvent actionEvent){  
         salvar();
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns",  "Registro realizado com sucesso!");  
           
