@@ -5,7 +5,9 @@
     <div>   
             <h:form>                
                 <p:growl id="messages"/>
+                <ui:include src="imagenstopohome.xhtml"/>  
                 <p:menubar>
+                    
                     <p:menuitem value="Home" url="index.xhtml"/>
                     <p:submenu label="Esquemas" url="#">
                         <p:menuitem value="Exercicios" url="exercicios.xhtml" />
@@ -15,7 +17,7 @@
 
                     <p:submenu label="Objetivos" icon="ui-icon-pencil">
                         <p:menuitem value="Hipertrofia Muscular" url="HipertrofiaMuscular.xhtml"/>
-                        <p:menuitem value="Redução de peso" url="#"/>
+                        <p:menuitem value="Redução de peso" url="HipertrofiaMuscular.xhtml"/>
                     </p:submenu>
                     <p:menuitem value="Login" url="login.xhtml" />
                     <p:menuitem value="Registrar" url="registrar.xhtml" />
