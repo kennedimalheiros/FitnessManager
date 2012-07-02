@@ -14,10 +14,7 @@ import javax.persistence.*;
 @Entity
 public class Usuario implements Serializable {
      
-    public Usuario(){
-        this.id = 0L;
-        this.login = "";
-        this.senha = ""; 
+    public Usuario(){ 
     }
     
     private static final long serialVersionUID = 1L;
@@ -30,7 +27,10 @@ public class Usuario implements Serializable {
     
     @Column(unique=true, length=50)
     private String login;
-
+    
+    @ManyToOne(cascade= CascadeType.REFRESH,targetEntity=EsquemaExercicio.class)
+    private EsquemaExercicio ee;
+    
     public String getLogin() {
         return login;
     }

@@ -22,11 +22,26 @@ public class Pessoa implements Serializable {
     @Column(length=100)
     private String nome;
     
-    @Column(length=11)
-    private String cpf;
+    @Column
+    private String end_rua;
     
-    @Column(length=11)
-    private String rg;
+    @Column
+    private String end_bairro;
+    
+    @Column
+    private String end_cidade;
+    
+    @Column
+    private String end_cep;
+    
+    @Column
+    private String telefone;
+    
+    @Column
+    private String celular;
+    
+    @Column
+    private String email;
     
     @Column
     private Boolean status;
@@ -38,8 +53,64 @@ public class Pessoa implements Serializable {
     @ManyToOne(targetEntity=Medida.class)
     Medida medida;
     
-    @OneToOne()
+    @OneToOne(cascade= CascadeType.PERSIST)
     Usuario usuario;
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEnd_bairro() {
+        return end_bairro;
+    }
+
+    public void setEnd_bairro(String end_bairro) {
+        this.end_bairro = end_bairro;
+    }
+
+    public String getEnd_cep() {
+        return end_cep;
+    }
+
+    public void setEnd_cep(String end_cep) {
+        this.end_cep = end_cep;
+    }
+
+    public String getEnd_cidade() {
+        return end_cidade;
+    }
+
+    public void setEnd_cidade(String end_cidade) {
+        this.end_cidade = end_cidade;
+    }
+
+    public String getEnd_rua() {
+        return end_rua;
+    }
+
+    public void setEnd_rua(String end_rua) {
+        this.end_rua = end_rua;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
     
     public Medida getMedida() {
         return medida;
@@ -49,14 +120,6 @@ public class Pessoa implements Serializable {
         this.medida = medida;
     }
     
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public Date getDt_nascimento() {
         return dt_nascimento;
     }
@@ -89,13 +152,6 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
 
     public Boolean getStatus() {
         return status;
