@@ -19,16 +19,16 @@
     <h:body>
         <div id="main_body">
             <div class="form_title">
-            <img src="images/form_title.gif" alt="Sleek &amp; Modern Login Form - Design3Edge" />
+            <img src="images/form_title.gif"/>
             </div>
             <div class="form_box">
                 <h:form id="loginform">
-                    
+                    <p:growl id="growl" showDetail="true" sticky="true" />
                     <p class="form_text">
                         *Usuario
                     </p>
                     <p class="form_input_BG">
-                        <h:inputText type="text" name="name" id="name" value="#{telalogin.login}"/>
+                        <h:inputText type="text" id="name" value="#{telalogin.login}"/>
                     </p>
                     <p class="clear">
                         &nbsp;
@@ -43,7 +43,7 @@
                         &nbsp;
                     </p>
                     <p class="buttom_login">
-                        <p:commandLink action="index.xhtml" update="loginform">
+                        <p:commandLink id="bLogin" action="index.xhtml" ajax="false" update="loginform" actionListener="#{telalogin.msgInformativo}">
                             <input title="Entrar" style="margin-left:96px;" type="image" src="images/login_btn.png" name="login" id="login"/>
                         </p:commandLink>
                         <h:commandLink action="registrar.xhtml">

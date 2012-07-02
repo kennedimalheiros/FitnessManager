@@ -21,7 +21,7 @@ public class Exercicio implements Serializable {
     @Column(length=30)
     private String nome;
     
-    @Column(length=2048)
+    @Column(length=255)
     private String descricao;
     
     @Column

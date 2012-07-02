@@ -4,7 +4,9 @@
  */
 package br.com.FitnessManager.presentation.web;
 
+import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
 import br.com.FitnessManager.DomainModel.IUsuarioRepositorio;
+import br.com.FitnessManager.DomainModel.Pessoa;
 import br.com.FitnessManager.DomainModel.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -29,18 +31,32 @@ public class TelaLogin implements Serializable {
     
     @EJB
     IUsuarioRepositorio repUser;
-    String login,senha,alerta;
+    
+    @EJB
+    IPessoaRepositorio repPessoa;
+    
+    String login,senha;
+    String redirect = "#";
+    Pessoa pessoa = null;
 
-    public String getAlerta() {
-        return alerta;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setAlerta(String alerta) {
-        this.alerta = alerta;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+    
+    public String getRedirect() {
+        return redirect;
+    }
+
+    public void setRedirect(String redirect) {
+        this.redirect = redirect;
     }
 
     public String getLogin() {
-        return "Teste";
+        return login;
     }
 
     public void setLogin(String login) {
@@ -56,7 +72,7 @@ public class TelaLogin implements Serializable {
     }
     
     public TelaLogin() {
-    
+            
     }
     
     public void abrir(){
@@ -82,8 +98,8 @@ public class TelaLogin implements Serializable {
     }
     public boolean verificaSenha(){
         Usuario u = repUser.porNome(login);
-        String senha = encripta(this.senha);
-        if(senha.equals(u.getSenha())){
+        String pass = encripta(this.senha);
+        if(pass.equals(u.getSenha())){
                 //Se exite usuário com mesmo nome, retora verdadeiro, se não.
             return true;
         }
@@ -102,25 +118,28 @@ public class TelaLogin implements Serializable {
     }
     
     public void msgInformativo(ActionEvent actionEvent){  
-        abrir();
-        int log = 1;
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao Logar", "Dados incorretos");
+        int log = validaLogin();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao Logar",  "Erro ao realizar Login!");
         if(log==2){
              message.setSeverity(FacesMessage.SEVERITY_INFO);
-             message.setSummary("Login");
+             message.setSummary("Login efetuado com sucesso!");
              message.setDetail("Login realizado com sucesso!");
+             pessoa = repPessoa.abrir(1L);
         }
         if(log==1){
              message.setSeverity(FacesMessage.SEVERITY_ERROR);
-             message.setSummary("Login");
+             message.setSummary("Senha Incorreta!");
              message.setDetail("Senha incorreta, tente novamente!");
+             redirect="#";
         }
         if(log==0){
              message.setSeverity(FacesMessage.SEVERITY_ERROR);
-             message.setSummary("Login");
+             message.setSummary("Usuário incorreto!");
              message.setDetail("Usuario nao existe, verifique\no nome digitado e tente novamente!");
+             redirect="#";
         }
-        FacesContext.getCurrentInstance().addMessage(null, message);  
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        redirect= "#";
     }
     
     public static String encripta (String senha) {     

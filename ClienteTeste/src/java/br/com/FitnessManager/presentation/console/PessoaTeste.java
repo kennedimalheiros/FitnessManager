@@ -38,8 +38,6 @@ public class PessoaTeste {
             u.setSenha("1234");            
             ejbu.salvar(u);
             p.setNome("Gpzim Pacheco");
-            p.setCpf("12345678910");
-            p.setRg("MG15407333");
             p.setStatus(Boolean.TRUE);
             ejbp.salvar(p);
             System.out.println("ID Usuário: "+ejbu.porNome("Gpzim").getId());

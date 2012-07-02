@@ -12,37 +12,82 @@
             <p:panel header="Registrar" footer="Desenvolvido por Gpzim, Chrome e Lilo" >
                 <ui:include src="cabecalho.xhtml" /> 
                 <h2>Favor informar os dados abaixo:</h2>
-                <h:form id="formreg">
-                    <p:growl id="growl" showDetail="true" sticky="true" />
-                    <br/>
-                    Usuário*:
-                    <br/>
-                    <p:inputText id="usuario" value="#{registroUsuario.usuario}" required="true"/>
-                    <br/>
-                    Nome*:
-                    <br/>
-                    <p:inputText id="nome" value="#{registroUsuario.nome}" required="true"/>
-                    <br/>
-                    Senha*:
-                    <br/>
-                    <p:password id="senha" match="confirmasenha" minLength="8" value="#{registroUsuario.senha}" feedback="true"   
-                                promptLabel="Força da Senha" weakLabel="Fraca"  
-                                goodLabel="Boa" strongLabel="Excelente" required="true"/>
-                    <br/>
-                    Confirmar Senha*:
-                    <br/>
-                    <p:password id="confirmasenha" minLength="8" value="#{registroUsuario.senha}" feedback="false" label="Confirma senha" required="true"/>
-                    <br/>
-                    <p:commandButton id="saveButton" update="formreg" value="Registrar" onclick="confirmation.show()"/>
-                    <h:outputLabel id="msg" value="#{registroUsuario.nome}"/>
-                    <p:confirmDialog id="confirmDialog"  message="Confirmar Registro?"  
-                        header="Registro de novo Usuário" severity="alert" widgetVar="confirmation">  
-                        <br/>
-                        <p:commandButton id="confirm" value="Confirmar" update="growl" oncomplete="confirmation.hide()"  
-                                         actionListener="#{registroUsuario.msgConfirma}"/>  
-                        <p:commandButton id="decline" value="Cancelar" onclick="confirmation.hide()" type="button" />           
-                    </p:confirmDialog>
-                </h:form>
+                <h:form>
+                    <p:wizard id="wizard" widgetVar="wiz"  
+                              flowListener="#{registro.onFlowProcess}">
+                        <p:tab id="conta" title="Registro">    
+                            <p:panel>
+                                <br/>
+                                Usuário*:
+                                <br/>
+                                <p:inputText id="usuario" value="#{registro.usuario.login}" required="true"/>
+                                <br/>
+                                Nome*:
+                                <br/>
+                                <p:inputText id="nome" value="#{registro.pessoa.nome}" required="true"/>
+                                <br/>
+                                Senha*:
+                                <br/>
+                                <p:password id="senha" match="confirmasenha" minLength="8" value="#{registro.usuario.senha}" feedback="true"   
+                                            promptLabel="Força da Senha" weakLabel="Fraca"  
+                                            goodLabel="Boa" strongLabel="Excelente" required="true"/>
+                                <br/>
+                                Confirmar Senha*:
+                                <br/>
+                                <p:password id="confirmasenha" minLength="8" value="#{registro.usuario.senha}" feedback="false" label="Confirma senha" required="true"/>
+                                <br/>
+                            </p:panel>
+                        </p:tab>
+                        <p:tab id="pessoal" title="Dados Pessoais">  
+                            <p:panel>
+                                <p:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+                                    <h:outputText value="Nome: "/>  
+                                    <p:inputText  id="Nome" value="#{registro.pessoa.nome}" label="nome"/> 
+                                    <h:outputText value="Rua: " /> 
+                                    <p:inputText  id="Rua" value="#{registro.pessoa.end_rua}" label="rua"/>  
+                                    <h:outputText value="Bairro: " />
+                                    <p:inputText  id="Bairro" value="#{registro.pessoa.end_bairro}" label="=bairro"/> 
+                                    <h:outputText value="Cidade: " />  
+                                    <p:inputText  id="Cidade" value="#{registro.pessoa.end_cidade}" label="cidade"/>  
+                                    <h:outputText value="CEP: " />  
+                                    <p:inputMask id="CEP" value="#{registro.pessoa.end_cep}" mask="99999-999" label="cep"/>  
+                                    <h:outputText value="Telefone:" />  
+                                    <p:inputMask id="Telefone" value="#{registro.pessoa.telefone}" mask="(99)9999-9999" label="telefone"/>  
+                                    <h:outputText value="Celular: " />  
+                                    <p:inputMask id="Celular" value="#{registro.pessoa.celular}" mask="(99)9999-9999" label="celular"/>
+                                    <h:outputText value="Email: " />  
+                                    <p:inputText  id="Email" value="#{registro.pessoa.email}" label="email"/>
+                                </p:panelGrid>
+                            </p:panel>
+                        </p:tab>                   
+                        <p:tab id="confirma" title="Finalizar">
+                            <p:panel>
+                                <h:form>                                
+                                    <p:growl id="growl" showDetail="true" sticky="true" />
+                                    <h:outputText value="#{registro.usuario.login}" />
+                                    <h:outputText value="#{registro.usuario.senha}" />
+                                    <h:outputText value="#{registro.pessoa.nome}" />
+                                    <h:outputText value="#{registro.pessoa.end_rua}" />
+                                    <h:outputText value="#{registro.pessoa.end_bairro}" />
+                                    <h:outputText value="#{registro.pessoa.end_cidade}" />
+                                    <h:outputText value="#{registro.pessoa.end_cep}" />
+                                    <h:outputText value="#{registro.pessoa.celular}" />
+                                    <h:outputText value="#{registro.pessoa.telefone}" />
+                                    <h:outputText value="#{registro.pessoa.email}" />
+                                    
+                                    <p:commandButton id="saveButton" value="Registrar" onclick="confirmation.show()"/>
+                                    <p:confirmDialog id="confirmDialog"  message="Confirmar Registro?"  
+                                        header="Registro de novo Usuário" severity="alert" widgetVar="confirmation">  
+                                        <br/>
+                                        <p:commandButton id="confirm" value="Confirmar" update="growl" oncomplete="confirmation.hide()" 
+                                                         actionListener="#{registro.registrar}"/>  
+                                        <p:commandButton id="decline" value="Cancelar" onclick="confirmation.hide()" type="button" />           
+                                    </p:confirmDialog>
+                                </h:form>
+                            </p:panel>
+                        </p:tab>
+                    </p:wizard> 
+                </h:form>    
             </p:panel>
         </div>
     </h:body>  

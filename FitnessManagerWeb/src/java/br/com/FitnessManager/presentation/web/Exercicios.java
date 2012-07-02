@@ -11,6 +11,8 @@ import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;  
 import java.util.List;  
 import javax.ejb.EJB;
+import org.primefaces.event.DragDropEvent;
+
 /**
  *
  * @author Chrome
@@ -20,13 +22,17 @@ import javax.ejb.EJB;
 public class Exercicios implements Serializable{
 
     private List<Exercicio> exercicios;
+    
+    private List<Exercicio> exselecionados;
     private Exercicio exselecionado;
+    
     @EJB
     IExercicioRepositorio rep;
     
     public Exercicios() {
-    }  
-      
+    }
+
+          
     public Exercicio getExercicioSelecionado() {  
         return exselecionado;  
     }  
@@ -36,11 +42,22 @@ public class Exercicios implements Serializable{
     }  
   
     public List<Exercicio> preencheLista() {  
-        if(exercicios == null)
-            exercicios = rep.listaTodos();
+        
         return exercicios;
     }
     public List<Exercicio> getExercicios() {  
+        if(exercicios == null)
+            exercicios = rep.listaTodos();
         return exercicios;  
-    } 
+    }
+    
+    public List<Exercicio> getExSelecionados() {  
+        return exselecionados;  
+    }
+    
+    public void onExDrop(DragDropEvent ddEvent) {  
+        Exercicio ex = ((Exercicio) ddEvent.getData());  
+        exselecionados.add(ex);  
+        exercicios.remove(ex);  
+    }
 }

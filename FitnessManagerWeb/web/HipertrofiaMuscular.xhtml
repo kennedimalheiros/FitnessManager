@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Fitness Manager 2012</title>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body class="body">
+        <div style="width: 900px; margin-left: 200px; margin-right: 200px;">    
+            <p:panel header="Fitness Manager" footer="Desenvolvido por Gpzim, Chrome e Lilo" >
+                <ui:include src="cabecalho.xhtml" /> 
+                    <h:form>    
+                        <p:growl id="growl" showDetail="true"/> 
+                        <p:panel header="Hipertrofia">  
+                            <p:panelGrid columns="2">
+                            <p:graphicImage value="/images/exercicios/hipertrofia.jpg" />
+                                <h:outputText value="Hipertrofia é o aumento quantitativo dos constituintes e 
+                                    das funções celulares, o que provoca aumento das células e órgãos 
+                                    afetados. Para ocorrer hipertrofia, deve-se atender algumas exigências: 
+                                    primeiro o fornecimento de O2 e de nutrientes deve ser maior para 
+                                    suprir o aumento das exigências celulares. Além disso, as células 
+                                    devem ter suas organelas e sistemas enzimáticos íntegros, por isso 
+                                    células lesadas não podem se hipertrofiar. Órgãos e tecidos cuja 
+                                    atividade depende da estimulação nervosa só podem hipertrofiar se a 
+                                    inervação estiver preservada."/>  
+                            </p:panelGrid> 
+                        </p:panel>  
+                    </h:form>
+            </p:panel>
+       </div>
+    </h:body>
+</html>
+
