@@ -11,6 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;  
 import java.util.List;  
 import javax.ejb.EJB;
+import org.primefaces.event.DragDropEvent;
 
 /**
  *
@@ -21,6 +22,8 @@ import javax.ejb.EJB;
 public class Exercicios implements Serializable{
 
     private List<Exercicio> exercicios;
+    
+    private List<Exercicio> exselecionados;
     private Exercicio exselecionado;
     
     @EJB
@@ -46,5 +49,15 @@ public class Exercicios implements Serializable{
         if(exercicios == null)
             exercicios = rep.listaTodos();
         return exercicios;  
-    } 
+    }
+    
+    public List<Exercicio> getExSelecionados() {  
+        return exselecionados;  
+    }
+    
+    public void onExDrop(DragDropEvent ddEvent) {  
+        Exercicio ex = ((Exercicio) ddEvent.getData());  
+        exselecionados.add(ex);  
+        exercicios.remove(ex);  
+    }
 }

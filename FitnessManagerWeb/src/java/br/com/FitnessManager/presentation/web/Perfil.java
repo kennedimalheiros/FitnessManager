@@ -8,9 +8,9 @@ import br.com.FitnessManager.DomainModel.Pessoa;
 import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
 import br.com.FitnessManager.DomainModel.Usuario;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -52,8 +52,10 @@ public class Perfil implements Serializable {
     public void setHabilita(boolean habilita) {
         this.habilita = habilita;
     }
-    
-    
+      
+    public void buscaDados(){
+       // usuario = ;
+    }
     
     public void habilita(){
         if(habilita)

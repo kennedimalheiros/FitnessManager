@@ -36,8 +36,7 @@ public class PessoaDAO extends DAOGenerico<Pessoa> implements IPessoaRepositorio
 
     @Override
     public Pessoa porLogin(String login) {
-        Query sql=(Query) manager.createQuery("select p from Pessoa p "
-                + "join Usuario u on u.id = p.usuario_id where u.login='"+login+"'");
+        Query sql=(Query) manager.createQuery("select p from Pessoa p left join Usuario u on u.id = p.usuario_id where u.login='"+login+"'");
         return (Pessoa)sql.getSingleResult();
     }
 

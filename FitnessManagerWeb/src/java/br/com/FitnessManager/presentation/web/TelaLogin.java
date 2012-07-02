@@ -4,7 +4,9 @@
  */
 package br.com.FitnessManager.presentation.web;
 
+import br.com.FitnessManager.DomainModel.IPessoaRepositorio;
 import br.com.FitnessManager.DomainModel.IUsuarioRepositorio;
+import br.com.FitnessManager.DomainModel.Pessoa;
 import br.com.FitnessManager.DomainModel.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -29,9 +31,22 @@ public class TelaLogin implements Serializable {
     
     @EJB
     IUsuarioRepositorio repUser;
+    
+    @EJB
+    IPessoaRepositorio repPessoa;
+    
     String login,senha;
     String redirect = "#";
+    Pessoa pessoa = null;
 
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+    
     public String getRedirect() {
         return redirect;
     }
@@ -57,7 +72,7 @@ public class TelaLogin implements Serializable {
     }
     
     public TelaLogin() {
-    
+            
     }
     
     public void abrir(){
@@ -109,7 +124,7 @@ public class TelaLogin implements Serializable {
              message.setSeverity(FacesMessage.SEVERITY_INFO);
              message.setSummary("Login efetuado com sucesso!");
              message.setDetail("Login realizado com sucesso!");
-             redirect= "index.xhtml";
+             pessoa = repPessoa.abrir(1L);
         }
         if(log==1){
              message.setSeverity(FacesMessage.SEVERITY_ERROR);

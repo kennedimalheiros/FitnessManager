@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Fitness Manager 2012</title>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript">
+            function handleDrop(event, ui) {
+                ui.draggable.fadeOut('fast'); //fade out the dropped item
+            }
+        </script>
+    </h:head>
+    <h:body class="body">
+        <div style="width: 900px; margin-left: 200px; margin-right: 200px;">
+            <p:panel header="Registrar" footer="Desenvolvido por Gpzim, Chrome e Lilo" >
+                <ui:include src="cabecalho.xhtml" /> 
+                <h:form id="exform">  
+                    <p:fieldset legend="Exercicios">  
+                        <p:dataGrid id="exDisponivel" var="ex"  
+                                    value="#{exercicios.exercicios}" columns="3">  
+                            <p:column>  
+                                <p:panel id="pnl" header="#{ex.nome}" style="text-align:center">  
+                                    <h:panelGrid columns="1" style="width:100%">  
+                                        <p:graphicImage value="/images/exercicios/miniatura/#{ex.endfoto}.jpg"/>  
+                                    </h:panelGrid>  
+                                </p:panel>  
+                                <p:draggable for="pnl" revert="true"  
+                                        handle=".ui-panel-titlebar" stack=".ui-panel"/>  
+                            </p:column>  
+                        </p:dataGrid>  
+                    </p:fieldset>  
+                    <p:fieldset id="Exselec" legend="Exercicios Selecionados" style="margin-top:20px">  
+
+                        <p:outputPanel id="dropArea">  
+
+                            <h:outputText value="!!!Arrasta para cá!!!"  
+                                          rendered="#{empty exercicios.exSelecionados}"  
+                                    style="font-size:24px;" />  
+
+                            <p:dataTable var="ex" value="#{exercicios.exSelecionados}"  
+                                    rendered="#{not empty exercicios.exSelecionados}">  
+
+                                <p:column headerText="Nome">  
+                                    <h:outputText value="#{ex.nome}" />  
+                                </p:column>  
+
+                                <p:column headerText="Descrição">  
+                                    <h:outputText value="#{ex.descricao}" />  
+                                </p:column>   
+                            </p:dataTable>  
+
+                        </p:outputPanel>  
+
+                    </p:fieldset>  
+                    <p:commandButton value="Atualizar" update="dropArea exDisponivel"/>
+                    
+                    <p:droppable for="Exselec" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="exDisponivel" onDrop="handleDrop">  
+                        <p:ajax listener="#{exercicios.onExDrop}" update="dropArea exDisponivel" />  
+                    </p:droppable>  
+
+                    
+                    <h:outputText id="messi" value="TESTE" />
+                    <p:draggable for="messi"/>
+                        <p:outputPanel id="zone" styleClass="slot" />
+                    <p:droppable for="zone">
+                        <p:ajax listener="#{exercicios.onDrop}" />
+                    </p:droppable>
+                </h:form> 
+            </p:panel>
+        </div>  
+    </h:body>  
+</html>
+
